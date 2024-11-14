@@ -1,9 +1,12 @@
-import React from 'react'
+
+import Quizzes from '../ui/Quizzes';
+import { useQuestions } from '../contexts/Questions';
 
 function Css() {
-  return (
-    <div>Css</div>
-  )
+  const { questionsData } = useQuestions();
+  const cssQuestions = questionsData[1];
+
+  return <Quizzes questions={cssQuestions} />;
 }
 
 export default Css

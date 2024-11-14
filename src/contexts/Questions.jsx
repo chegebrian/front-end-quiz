@@ -11,9 +11,20 @@ function reducer(state, action) {
     return {
       ...state,
       selectedAnswer: action.payload,
+      // points:
+      //   action.payload === state.correctAnswer
+      //     ? state.points + 1
+      //     : state.points,
+    };
+  }
+
+  if(action.type === "getPoints"){
+    return {
+      ...state,
+      
       points:
-        action.payload === state.correctAnswer
-          ? state.points ++
+        state.selectedAnswer === state.correctAnswer
+          ? state.points + 1
           : state.points,
     };
   }
@@ -41,6 +52,7 @@ function QuestionsProvider({ children }) {
     reducer,
     initialState,
   );
+console.log(points);
 
   useEffect(() => {
     async function getQuestions() {

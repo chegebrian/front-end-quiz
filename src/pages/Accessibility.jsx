@@ -1,9 +1,12 @@
-import React from 'react'
+
+import Quizzes from '../ui/Quizzes';
+import { useQuestions } from '../contexts/Questions';
 
 function Accessibility() {
-  return (
-    <div>Accessibility</div>
-  )
+  const { questionsData } = useQuestions();
+  const accessibilityQuestions = questionsData[3];
+
+  return <Quizzes questions={accessibilityQuestions} />;
 }
 
 export default Accessibility

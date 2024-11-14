@@ -1,8 +1,7 @@
-import React from "react";
-import { useQuestions } from "../contexts/Questions";
 
-function Completed({numQuestions}) {
-  const {points} = useQuestions()
+
+function Completed({numQuestions, points}) {
+
 
   
   return (

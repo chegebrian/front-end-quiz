@@ -6,7 +6,7 @@ import Button from "./Button";
 
 function Quizzes({ questions }) {
   const [answer, setAnswer] = useState("");
-  const { index, dispatch, selectedAnswer } = useQuestions();
+  const { index, dispatch, selectedAnswer, points } = useQuestions();
 
   const numQuestions = questions?.questions.length;
   const currentQuestion = questions?.questions[index];
@@ -19,6 +19,7 @@ function Quizzes({ questions }) {
   }, [correctAnswer, dispatch]);
   function submitAnswer() {
     setAnswer(selectedAnswer);
+    dispatch({ type: "getPoints" });
   }
   function nextQuestion() {
     setAnswer("");
@@ -53,12 +54,14 @@ function Quizzes({ questions }) {
           </div>
         </>
       )}
-      {index === numQuestions && <Completed numQuestions={numQuestions} />}
-      {answer === "" && <Button onClick={submitAnswer}>Submit answer</Button>}
+      {index === numQuestions && (
+        <Completed numQuestions={numQuestions} points={points} />
+      )}
+      {answer === "" && index !== numQuestions && <Button onClick={submitAnswer}>Submit answer</Button>}
       {answer !== "" && index < numQuestions && (
         <Button onClick={nextQuestion}>Next question</Button>
       )}
-      {answer !== "" && index === numQuestions && (
+      {index === numQuestions && (
         <Button onClick={playAgain}>Play again</Button>
       )}
     </>

@@ -1,4 +1,6 @@
-function AnswerList({ option, answer, onClick }) {
+
+
+function AnswerList({ option, answer,onClick }) {
   return (
     <label
       htmlFor={option}
