@@ -52,7 +52,7 @@ function QuestionsProvider({ children }) {
     reducer,
     initialState,
   );
-console.log(points);
+
 
   useEffect(() => {
     async function getQuestions() {

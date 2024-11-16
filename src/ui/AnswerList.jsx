@@ -1,10 +1,12 @@
+import { useDarkMode } from "../contexts/Darkmode";
 
 
 function AnswerList({ option, answer,onClick }) {
+ const {isDarkMode} = useDarkMode()
   return (
     <label
       htmlFor={option}
-      className="flex items-center gap-4 rounded-lg px-4 py-3"
+      className={`flex items-center gap-4 rounded-2xl px-4 py-3 ${isDarkMode ? "bg-slate-700" : "bg-slate-50"}`}
       onClick={onClick}
     >
       <input
@@ -15,8 +17,8 @@ function AnswerList({ option, answer,onClick }) {
         className="hidden"
       />
 
-      <span>{option}</span>
-      <p className="text-xl font-bold text-stone-700">{answer}</p>
+      <span className={`text-stone-700 font-bold py-4 px-4 text-xl  rounded-lg ${isDarkMode ? "bg-slate-200" :"bg-slate-300"}`}>{option}</span>
+      <p className={`text-xl font-bold ${isDarkMode ? "text-slate-200" : "text-stone-700"}`}>{answer}</p>
     </label>
   );
 }
